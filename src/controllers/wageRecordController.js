@@ -1,4 +1,4 @@
-const WageRecord = require("../models/WageRecord");
+const WageRecord = require("../models/Wagerecord");
 const Appointment = require("../models/Appointment");
 const Barber = require("../models/Barber");
 
