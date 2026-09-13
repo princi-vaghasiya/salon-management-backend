@@ -11,7 +11,7 @@ const {
     updateUser,
     deleteUser,
     loginUser
-} = require("../controllers/userController");
+} = require("../controllers/UserController");
 
 
 /**

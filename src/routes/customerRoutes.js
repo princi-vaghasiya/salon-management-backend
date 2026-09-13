@@ -5,7 +5,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 
 
-const { createCustomer , getAllCustomers , getCustomerById , updateCustomer , deleteCustomer} = require("../controllers/CustomerController");
+const { createCustomer , getAllCustomers , getCustomerById , updateCustomer , deleteCustomer} = require("../controllers/customerController");
 
 
 /**
