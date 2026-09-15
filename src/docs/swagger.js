@@ -20,7 +20,7 @@ const options = {
         },
                 servers: [
             {
-                url: "http://localhost:5000"
+                url: "https://salon-management-backend-976g.onrender.com"
             }
         ]
     },
