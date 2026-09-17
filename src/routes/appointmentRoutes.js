@@ -55,7 +55,6 @@ const roleMiddleware = require("../middlewares/roleMiddleware");
 router.post("/",authMiddleware,roleMiddleware(["customer","admin"]),createAppointment);
 
 
-router.post("/",authMiddleware,roleMiddleware(["customer","admin"]),createAppointment);
 router.get("/",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAllAppointment);
 router.get("/:id",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAppointmentById);
 router.patch("/:id",authMiddleware,roleMiddleware(["admin","barber","customer"]),UpdateAppointment);
