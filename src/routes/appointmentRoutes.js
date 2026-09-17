@@ -52,6 +52,7 @@ const roleMiddleware = require("../middlewares/roleMiddleware");
  *       409:
  *         description: Barber is already booked at this time
  */
+router.get("/",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAllAppointment);
 router.post("/",authMiddleware,roleMiddleware(["customer","admin"]),createAppointment);
 
 
