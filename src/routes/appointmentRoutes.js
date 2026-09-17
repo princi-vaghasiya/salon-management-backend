@@ -52,13 +52,104 @@ const roleMiddleware = require("../middlewares/roleMiddleware");
  *       409:
  *         description: Barber is already booked at this time
  */
-router.get("/",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAllAppointment);
 router.post("/",authMiddleware,roleMiddleware(["customer","admin"]),createAppointment);
 
 
+/**
+ * @swagger
+ * /appointments:
+ *   get:
+ *     summary: Get all appointments
+ *     tags: [Appointments]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of all appointments
+ */
 router.get("/",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAllAppointment);
+
+
+/**
+ * @swagger
+ * /appointments/{id}:
+ *   get:
+ *     summary: Get appointment by ID
+ *     tags: [Appointments]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Appointment found
+ *       404:
+ *         description: Appointment not found
+ */
 router.get("/:id",authMiddleware,roleMiddleware(["admin","barber","customer"]),getAppointmentById);
+
+
+/**
+ * @swagger
+ * /appointments/{id}:
+ *   patch:
+ *     summary: Update appointment
+ *     tags: [Appointments]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               appointmentDate:
+ *                 type: string
+ *                 format: date-time
+ *               status:
+ *                 type: string
+ *               remarks:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Appointment updated successfully
+ *       404:
+ *         description: Appointment not found
+ */
 router.patch("/:id",authMiddleware,roleMiddleware(["admin","barber","customer"]),UpdateAppointment);
+
+
+/**
+ * @swagger
+ * /appointments/{id}:
+ *   delete:
+ *     summary: Delete appointment
+ *     tags: [Appointments]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Appointment deleted successfully
+ *       404:
+ *         description: Appointment not found
+ */
 router.delete("/:id",authMiddleware,roleMiddleware(["admin","customer"]),DeleteAppointment);
 
 module.exports = router;
